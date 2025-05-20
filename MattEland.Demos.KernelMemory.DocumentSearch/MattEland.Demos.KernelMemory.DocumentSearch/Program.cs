@@ -2,12 +2,11 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.KernelMemory;
 using Spectre.Console;
-using Spectre.Console.Json;
 
 // Everything is better with a nice header
 IAnsiConsole console = AnsiConsole.Console;
-console.Write(new FigletText("KernelMemory Doc Search").Color(Color.Yellow));
-console.MarkupLine("[cyan]KernelMemory Document Search Demo[/]");
+console.Write(new FigletText("Kernel Memory").Color(Color.Yellow));
+console.MarkupLine("[cyan]Kernel Memory Document Search Demo[/]");
 console.WriteLine();
 
 // Load Settings
@@ -49,7 +48,7 @@ console.MarkupLine("[green]Documents imported.[/]");
 string search = console.Ask<string>("What do you want to search for?");
 console.MarkupLineInterpolated($"[yellow]Searching for '{search}'...[/]");
 
-SearchResult results = await memory.SearchAsync("KernelMemory");
+SearchResult results = await memory.SearchAsync(search);
 
 Table table = new Table()
 	.AddColumns("Document", "Partition", "Section", "Score", "Text");
